@@ -28,7 +28,8 @@
     "storybook:ci": "npm run storybook -- --ci --quiet",
     "storybook:prep": "npm run build && babel-node scripts/storybook-prep.js",
     "storybook:static": "rm -rf storybook-static && npm run storybook:prep && STORYBOOK_ENV=docs build-storybook -c .storybook -o storybook-static -s .storybook/static/,node_modules/@sap-theming --docs",
-    "storybook:visual:setup": "jest storyshots --no-cache --config=./config/jest.config.js"
+    "storybook:visual:setup": "jest storyshots --no-cache --config=./config/jest.config.js",
+    "chromatic": "npx chromatic --project-token ahksyf4ffkv --build-script-name=storybook:static"
   },
   "repository": {
     "type": "git",
@@ -61,6 +62,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "bundlesize": "^0.18.0",
+    "chromatic": "^5.1.0",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
