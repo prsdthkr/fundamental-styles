@@ -8,14 +8,24 @@ import initStoryshots from '@storybook/addon-storyshots';
 // needed to prevent failures from @storybook/components
 global.window = { ...global };
 
+// DUMP_VISUAL_DIFF_TO_CONSOLE=true is set only in .travis.yml (Ci)
+// So that we don't see the base64 of a diff image in dev workflow
+const { DUMP_VISUAL_DIFF_TO_CONSOLE = false } = process.env;
+
+console.info(`Visual diff console dumps are ${DUMP_VISUAL_DIFF_TO_CONSOLE ? 'ENABLED' : 'DISABLED'}`);
+
 const getMatchOptions = ({ context }) => {
     return {
-        failureThreshold: 0.001,
+        blur: 3,
+        customDiffConfig: {
+            threshold: 0.2
+        },
+        failureThreshold: 0.03,
         failureThresholdType: 'percent',
         customSnapshotIdentifier: () => context.name.replace(/\s/g, ''),
         // Will output base64 string of a diff image to console in case of failed tests (in addition to creating a diff image).
         // This string can be copy-pasted to a browser address string to preview the diff for a failed test.
-        dumpDiffToConsole: true,
+        dumpDiffToConsole: DUMP_VISUAL_DIFF_TO_CONSOLE,
         allowSizeMismatch: true
     };
 };
@@ -33,7 +43,7 @@ const view = {
 const customizePage = (page) => page.emulate(view);
 const beforeScreenshot = (page) => page.emulate(view);
 
-// create visual regession images from each story
+// create visual regression images from each story
 initStoryshots({
     framework: 'html',
     storyKindRegex: /Visual\/([A-Z])\w+/,

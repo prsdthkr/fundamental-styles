@@ -13,4 +13,5 @@ storybook-static
 stories/docs/
 dist
 node_modules
-
+*.visual.js
+stories/*/*.visual.js
