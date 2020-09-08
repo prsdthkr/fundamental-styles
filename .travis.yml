@@ -14,6 +14,8 @@ jobs:
     script: npm run lint
   -
     script: npm run build:prod && npm run size
+  -
+    script: npm run chromatic
   - stage: Pre-release
     if: branch = master AND type = push
     before_deploy:
