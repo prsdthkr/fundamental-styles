@@ -14,8 +14,6 @@ jobs:
     script: npm run lint
   -
     script: npm run build:prod && npm run size
-  -
-    script: if [[ $TRAVIS_EVENT_TYPE != 'pull_request' ||  $TRAVIS_PULL_REQUEST_SLUG != $TRAVIS_REPO_SLUG ]]; then npm run chromatic; fi
   - stage: Pre-release
     if: branch = master AND type = push
     before_deploy:
