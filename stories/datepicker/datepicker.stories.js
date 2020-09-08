@@ -28,14 +28,6 @@ export const defaultAndCompactSizes = () => `
         <div class="fd-input-group">
           <input id="defaultDatepicker" class="fd-input fd-input-group__input" type="text" value="" placeholder="Pick a date">
           <span class="fd-input-group__addon fd-input-group__addon--button">
-          <button
-            class="fd-input-group__button fd-popover__control fd-button fd-button--transparent"
-            aria-controls="Itcgq828"
-            aria-expanded="true"
-            aria-haspopup="true"
-            aria-label="Choose Date">
-                <i class="sap-icon--appointment-2"></i>
-            </button>
           </span>
         </div>
       </div>
