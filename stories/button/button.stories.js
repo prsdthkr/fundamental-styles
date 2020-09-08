@@ -32,7 +32,7 @@ export default {
 export const primary = () => `
     <button class="fd-button">Create</button>
     <button class="fd-button" aria-label="Add to cart"><i class="sap-icon--cart"></i></button>
-    <button class="fd-button fd-button--emphasized ">Save</button>
+    <button class="fd-button">Save</button>
 `;
 
 /**
